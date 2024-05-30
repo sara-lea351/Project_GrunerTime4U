@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const login = async (req, res, next) => {
-    try{
+  
         const { email, password } = req.body
         if (!email || !password) {
             return res.status(400).json({ message: 'All fields are required' })
@@ -17,10 +17,7 @@ const login = async (req, res, next) => {
         const userInfo = { _id: foundUser._id, name: foundUser.name, password: foundUser.password, role: foundUser.role, email: foundUser.email, watches: foundUser.watches }
         const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET)
         res.json({ accessToken: accessToken,user:{id:userInfo._id,name:userInfo.name,watches:userInfo.watches}})
-    }
-    catch(error){
-        next(error)
-    }
+   
 }
 
 const register = async (req, res) => {
