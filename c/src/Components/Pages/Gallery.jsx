@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataView } from 'primereact/dataview';
-import { useAddToFavoriteMutation, useGetGalleryQuery } from '../../Slices/galleryApiSlice';
+import { useAddToFavoriteMutation, useGetGalleryQuery, useGetFavoriteQuery} from '../../Slices/galleryApiSlice';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../Slices/authSlice';
 import { useRef } from 'react';
@@ -19,6 +19,7 @@ const Gallery = () => {
   const { data: gallery, isSuccess: success, isLoading, isError, error } = useGetGalleryQuery()
   const { data: companies, isSuccess: sss } = useGetCompaniesQuery()
   const [AddToFavorite, { data, isSuccess }] = useAddToFavoriteMutation()
+  const { data: full_favourites, isLoading:load, isError:err } = useGetFavoriteQuery()
   const [watchDetails, setWatchDetails] = useState({});
   const [showWatchDetails, setShowWatchDetails] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -75,12 +76,13 @@ const Gallery = () => {
     setSelectedCompanies(_selectedCompanies);
   };
 
+  let watches = JSON.parse(localStorage.getItem("user")).watches
+
   const HandleHeartClick = (watch) => {
     if (!localStorage.token) {
       showSwal();
     }
     else {
-      let watches = JSON.parse(localStorage.getItem("user")).watches
       const duplicate = watches.filter(w => w == watch._id)
       if (!duplicate?.length) {
         toast.current.show({ severity: 'success', summary: `${watch.companyBarcode}`, detail: 'נוסף בהצלחה', life: 3000 });
@@ -167,15 +169,15 @@ const Gallery = () => {
                   </div>
                   <div className="flex pt-3 justify-content-between align-items-center">
                     <button className="p-element p-ripple p-button-text p-button p-component" disabled={product.quantity == 0} onClick={() => HandleWatchDetails(product._id)}>
-                      <span className="p-button-icon p-button-icon-left pi pi-plus" aria-hidden="true"></span>
-                      <span className="p-button-label">
+                      <span className="p-button-icon p-button-icon-left pi pi-plus" style={{color:'#1b5446'}} aria-hidden="true"></span>
+                      <span className="p-button-label" style={{color:'#1b5446'}}>
                         פרטי מוצר
                       </span>
                       <span className="p-ink"></span>
                     </button>
                     <button className="p-element p-ripple p-button-text p-button p-component" disabled={product.quantity == 0} onClick={() => HandleHeartClick(product)}>
-                      <span className="p-button-icon p-button-icon-left pi pi-heart" aria-hidden="true"></span>
-                      <span className="p-button-label">
+                      <span className={watches?.includes(product._id)?"p-button-icon p-button-icon-left pi pi-heart-fill":"p-button-icon p-button-icon-left pi pi-heart"} style={{color:'#1b5446'}} full aria-hidden="true"></span>
+                      <span className="p-button-label" style={{color:'#1b5446'}}>
                         הוסף למועדפים
                       </span>
                       <span className="p-ink"></span>
@@ -322,7 +324,7 @@ const Gallery = () => {
                     {companies?.map((company) => {
                       return (
                         <div className="flex align-items-center"  >
-                          <Checkbox name="company" value={company} onChange={onCategoryChange} checked={selectedCompanies.some((item) => item === company?.name)} />
+                          <Checkbox name="company" value={company} style={{backgroundColor:'#1b5446'}} onChange={onCategoryChange} checked={selectedCompanies.some((item) => item === company?.name)} />
                           <label className="ml-2">
                             {company.name}
                           </label>
