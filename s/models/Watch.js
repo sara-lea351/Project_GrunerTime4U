@@ -14,7 +14,6 @@ const watchSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    //גרונר
     actualCost: {
         type: Number,
         required: true,

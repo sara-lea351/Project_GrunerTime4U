@@ -168,11 +168,6 @@ export default function AdminGallery() {
     const uploadOptions = { icon: 'pi pi-fw pi-cloud-upload', iconOnly: true, className: 'custom-upload-btn p-button-success p-button-rounded p-button-outlined' };
     const cancelOptions = { icon: 'pi pi-fw pi-times', iconOnly: true, className: 'custom-cancel-btn p-button-danger p-button-rounded p-button-outlined' };
 
-    // const formatCurrency = (value) => {
-    //     //return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    //     return 
-    // };
-
     const openNew = () => {
         if (!brands) {
             setVisible(true)
@@ -336,13 +331,6 @@ export default function AdminGallery() {
         setProduct(_product);
     };
 
-    // const onQuantityChange = () => {
-    //     let _product = { ...product };
-
-    //     _product['quantity'] = product.quantity - 1;
-    //     setProduct(_product);
-    // };
-
     const onInputChange = (e, name) => {
         const val = (e.target && e.target.value) || '';
         let _product = { ...product };
@@ -382,15 +370,6 @@ export default function AdminGallery() {
 
         setPurchase(_purchase);
     };
-
-    // const leftToolbarTemplate = () => {
-    //     return (
-    //         <div className="flex flex-wrap gap-2">
-    //             <Button label="New Watch" icon="pi pi-plus" severity="success" onClick={openNew} />
-    //             <Button label="Export" icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />
-    //         </div>
-    //     );
-    // };
 
     const rightToolbarTemplate = () => {
         return (

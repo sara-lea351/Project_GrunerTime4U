@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FilterMatchMode, FilterService } from 'primereact/api';
-import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
-import { Column, ColumnFilterElementTemplateOptions } from 'primereact/column';
+import { FilterMatchMode } from 'primereact/api';
+import { DataTable} from 'primereact/datatable';
+import { Column} from 'primereact/column';
 import { useDeleteFromSalesMutation, useGetSalesQuery } from '../../Slices/salesApiSlice';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
@@ -43,10 +43,7 @@ export default function CustomFilterDemo() {
         dt.current.exportCSV();
     };
 
-    const rightToolbarTemplate = () => {
-       
-    };
-
+  
 
     const hideDeleteProductDialog = () => {
         setDeleteProductDialog(false);

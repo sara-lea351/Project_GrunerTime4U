@@ -14,22 +14,17 @@ import { InputText } from "primereact/inputtext";
 import Swal from 'sweetalert2'
 import { Toast } from 'primereact/toast';
 import { useGetCompaniesQuery } from '../../Slices/companiesApiSlice';
-import { ProgressSpinner } from 'primereact/progressspinner';
 import { RadioButton } from 'primereact/radiobutton';
 const Gallery = () => {
   const { data: gallery, isSuccess: success, isLoading, isError, error } = useGetGalleryQuery()
   const { data: companies, isSuccess: sss } = useGetCompaniesQuery()
   const [AddToFavorite, { data, isSuccess }] = useAddToFavoriteMutation()
-  const [visible, setVisible] = useState(false);
   const [watchDetails, setWatchDetails] = useState({});
   const [showWatchDetails, setShowWatchDetails] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
-  const [newProducts, setNewProducts] = useState([]);
-  const [layout, setLayout] = useState('grid');
   const [showGallery, setShowGallery] = useState([]);
   const [checkedMen, setCheckedmen] = useState(false)
   const [checkedWomen, setCheckedwomen] = useState(false)
-  const [inputValue, setInputValue] = useState('')
   const [sortKey, setSortKey] = useState(1);
   const [sortOrder, setSortOrder] = useState(0);
   const [sortField, setSortField] = useState('');
@@ -352,7 +347,6 @@ const Gallery = () => {
               </span>
             </div>
             <br />
-            {/* <h6 >:חיפוש לפי קטגוריה</h6> */}
             <b style={{ marginLeft: '42%' }}>:קטגוריות</b><br /><br />
             <RadioButton inputId='men' onChange={e => { setCheckedmen(!checkedMen); if (checkedWomen) setCheckedwomen(false); if (e.checked) setGender('גברים'); else setGender('') }} checked={checkedMen} />
             <label htmlFor="men" className="ml-2">גברים</label>

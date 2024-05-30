@@ -90,7 +90,6 @@ const Login = () => {
                                     autoFocus
                                     onChange={(e) => {
                                         formik.setFieldValue('email', e.target.value);
-                                        // setEmailCorrect(true); // Reset email correctness when user changes email
                                     }}
                                     className={classNames({ 'p-invalid': !emailCorrect || formik.errors.email })}
                                 />
