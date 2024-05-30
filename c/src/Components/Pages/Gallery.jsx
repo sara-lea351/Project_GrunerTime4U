@@ -274,21 +274,23 @@ const Gallery = () => {
         </div>
         <div className='line'></div>
         {/* <button className="responsiveFilters" style={{ backgroundColor: "#235447" }} icon="pi pi-plus" onClick={() =>setVisibleRight(true) } /> */}
-        <Sidebar style={{width:"50vw"}} visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
+        <Sidebar style={{ width: "70vw" }} visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className="" style={{ width: '15%', height: '45vw' }}>
+            <div className="" style={{  height: '45vw' }}>
               <br />
               <div className="search">
                 <div className="">
-                  <span className="p-input-icon-left" style={{ display: 'flex', alignItems: 'center' }}>
+                  <span className="p-input-icon-left" style={{display: 'flex', alignItems: 'center' }}>
                     <i className="pi pi-search" />
-                    <InputText onChange={(e) => barcodeFilter(e.target.value)} placeholder="Search" style={{ flex: 1, width: '50%' }} />
+                    <InputText onChange={(e) => barcodeFilter(e.target.value)} placeholder="Search" style={{ flex: 1 }} />
                   </span>
                 </div>
                 <br /><br />
-                <b>קטגוריות</b><br /><br />
-                <label htmlFor="men" className="ml-2">גברים</label>&nbsp;&nbsp;
-                <RadioButton inputId='men' onChange={e => { setCheckedmen(!checkedMen); if (checkedWomen) setCheckedwomen(false); if (e.checked) setGender('גברים'); else setGender('') }} checked={checkedMen} />
+                <b style={{marginLeft:'60%'}}>קטגוריות</b><br /><br />
+                <div className="flex justify-content-center">
+                  <label htmlFor="men" className="ml-2">גברים</label>&nbsp;&nbsp;
+                  <RadioButton inputId='men' onChange={e => { setCheckedmen(!checkedMen); if (checkedWomen) setCheckedwomen(false); if (e.checked) setGender('גברים'); else setGender('') }} checked={checkedMen} />
+                </div>
               </div>
               <br />
               <div className="flex justify-content-center">
@@ -305,22 +307,23 @@ const Gallery = () => {
               </button>
               <br /><br />
               <br />
-              <div className=" flex justify-content-center" style={{ justifyContent: 'center' }}>
-                <div className="flex flex-row gap-0">
+              <div className=" flex justify-content-center" style={{justifyContent: 'center' }}>
+                <div  className="flex flex-row gap-0">
                   <Slider value={value} onChange={(e) => setValue(e.value)} className="w-8rem" range min={0} max={maxPrice} step={10} /><br />
-                </div></div>
-              <span style={{ marginTop: '10vw' }}>
-                ₪ {value[0]}
+                </div>
+              </div>
+              <span style={{ marginRight:'40%'}}>
+                &nbsp; {"₪" + value[0]}
               </span>
               <span style={{ marginLeft: "6vw" }}>
-                ₪{value[1]}
+                &nbsp;{"₪" + value[1]}
               </span>
               <br /><br />
               <br />
-              <div><b>מותגים</b></div>
+              <div><b style={{marginLeft:'60%'}}>מותגים</b></div>
               <div class="inline-block text-center p-4 border-round">
                 <div className=" flex justify-content-center">
-                  <div className="flex flex-column gap-3">
+                  <div className="flex flex-column gap-3" style={{marginRight:'30%'}}>
                     {companies?.map((company) => {
                       return (
                         <div className="flex align-items-center"  >
