@@ -164,7 +164,7 @@ export default function CustomFilterDemo() {
             <Toast ref={toast} />
             <div className="card">
                 <br/>
-            <Button style={{ marginLeft: "90%", backgroundColor: "#235447" }} label="אפשרויות נוספות" icon="pi pi-plus" onClick={() => setVisibleRight(true)} />
+            <Button style={{width: '150px',margin: 'auto',marginRight: '10px', backgroundColor: "#235447" }}/>
             <Toolbar className="mb-4" ></Toolbar>
                 <DataTable ref={dt} tableStyle={{ direction: 'rtl' }} exportFilename={'Watches report '+new Date().toLocaleDateString('en-GB')} value={salesToShow} filters={filters} paginator rows={10} dataKey="id" filterDisplay="row" emptyMessage="No purchase found.">
                     <Column field="watch" header="שעון" filterField="watch.companyBarcode" exportField={exportWatch} style={{ minWidth: '12rem' }} body={watchBodyTemplate} filter filterPlaceholder="Search by companyBarcode" />
