@@ -3,7 +3,6 @@ const Watch = require("../models/Watch")
 
 const createWatch = async (req, res) => {
     const { company, companyBarcode, actualCost, price, disPrice, otherColors, size, description, barcode, quantity, category } = req.body
-    console.log(otherColors);
     const imageUrl = req.file.path;
     
     if (!company || !imageUrl || !companyBarcode || !actualCost || !price || !size || !description || !barcode || !quantity || !category)
@@ -28,7 +27,6 @@ const getWatchByID = async (req, res) => {
     if (!watch) {
         return res.status(400).send(`There is no watch with id:${id}  :(`)
     }
-    console.log(watch);
     res.json(watch)
 }
 
