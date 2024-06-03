@@ -76,7 +76,7 @@ const Gallery = () => {
     setSelectedCompanies(_selectedCompanies);
   };
 
-  let watches = JSON.parse(localStorage.getItem("user")).watches
+  let watches = JSON.parse(localStorage.getItem("user"))?.watches
 
   const HandleHeartClick = (watch) => {
     if (!localStorage.token) {

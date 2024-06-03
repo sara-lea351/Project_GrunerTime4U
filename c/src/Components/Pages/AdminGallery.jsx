@@ -106,7 +106,7 @@ export default function AdminGallery() {
             _totalSize += file.size || 0;
         });
         setTotalSize(_totalSize);
-        toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+        toast.current.show({ severity: 'info', summary: '', detail: 'הקובץ עלה בהצלחה' });
     };
 
     const onTemplateRemove = (file, callback) => {
@@ -277,7 +277,7 @@ export default function AdminGallery() {
                 UpdateWatch({ '_id': product._id, 'company': product.company, 'companyBarcode': product.companyBarcode, 'actualCost': product.actualCost, 'price': product.price, 'disPrice': product.disPrice, 'otherColors': product.otherColors, 'size': product.size, 'description': product.description, 'barcode': product.barcode, 'quantity': product.quantity - 1, 'category': product.category, 'isImgUpdate': false })
             }
             AddToSales({ 'name': purchase.name, 'phone': purchase.phone, 'date': purchase.date, 'originalPrice': purchase.originalPrice, 'paid': purchase.paid, 'watch': { id: purchase.watch_id, imageUrl: purchase.imageUrl, companyBarcode: purchase.companyBarcode } })
-            toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Purchase Created', life: 3000 });
+            toast.current.show({ severity: 'success', summary: '', detail: 'המוצר נוצר בהצלחה', life: 3000 });
             setPurchaseProductDialog(false);
             setPurchase(emptyProduct);
         }
@@ -310,7 +310,7 @@ export default function AdminGallery() {
         setSelectedBrand(null)
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
-        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+        toast.current.show({ severity: 'success', summary: '', detail: 'המוצר נמחק בהצלחה', life: 3000 });
     };
 
     const exportCSV = () => {
@@ -321,7 +321,7 @@ export default function AdminGallery() {
         let _products = products.filter((val) => !selectedProducts.includes(val));
         setDeleteProductsDialog(false);
         setSelectedProducts(null);
-        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+        toast.current.show({ severity: 'success', summary: '', detail: 'המוצר נמחק בהצלחה', life: 3000 });
     };
 
     const onCategoryChange = (e) => {

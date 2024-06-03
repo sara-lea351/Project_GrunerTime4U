@@ -137,7 +137,7 @@ export default function Company() {
         });
 
         setTotalSize(_totalSize);
-        toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+        toast.current.show({ severity: 'info', summary: '', detail: 'הקובץ עלה בהצלחה' });
     };
 
     const onTemplateRemove = (file, callback) => {
@@ -212,7 +212,7 @@ export default function Company() {
             setSelectedImg({})
             setDeleteProductDialog(false);
             setProduct(emptyProduct);
-            toast.current.show({ severity: 'success', summary: 'Successful', detail: ' החברה נמחקה בהצלחה', life: 3000 });
+            toast.current.show({ severity: 'success', summary: '', detail: ' החברה נמחקה בהצלחה', life: 3000 });
         }
 
     }, [error])
